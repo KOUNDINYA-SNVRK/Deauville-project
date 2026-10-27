@@ -1,4 +1,4 @@
-Deauville Festival du Rire 2027
+# Deauville Festival du Rire 2027
 
 A small Python website for looking through the festival programme. It has the festival days, artist and venue pages, a “what is on now?” section, and a simple organiser page for adding, moving, and cancelling performances.
 
