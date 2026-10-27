@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f1e8">
+    <title>Deauville Festival du Rire 2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" data-page-link="home" aria-label="Festival home">
+        <span class="brand-mark">R</span>
+        <span>Deauville <small>Festival du Rire</small></span>
+      </a>
+      <button class="menu-button" id="menu-button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page-link="home">Home</button>
+        <button class="nav-link" data-page-link="programme">Programme</button>
+        <button class="nav-link" data-page-link="artists">Artists</button>
+        <button class="nav-link" data-page-link="venues">Venues</button>
+        <button class="nav-link" data-page-link="now">On stage now</button>
+        <button class="nav-admin" data-page-link="admin">Organiser area <span>↗</span></button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-dot"></span> Deauville, Normandy · 10—13 June 2027</p>
+            <h1>Four days.<br><em>A lot of laughs.</em></h1>
+            <p class="hero-intro">Stand-up, improv and workshops by the sea. Pick a day, find your show, and make a night of it.</p>
+            <div class="hero-actions">
+              <button class="button button-dark" data-page-link="programme">Explore the programme <span>→</span></button>
+              <button class="text-button" data-page-link="artists">Meet the artists <span>↗</span></button>
+            </div>
+            <div class="hero-note"><span>✳</span> A little festival with a big stage presence.</div>
+          </div>
+          <div class="hero-art" aria-label="Illustration of a seaside stage">
+            <div class="sun"></div>
+            <div class="art-scribble">ha ha!</div>
+            <div class="art-stage">
+              <div class="stage-curtain"></div>
+              <div class="stage-floor"></div>
+              <div class="mic-stand"><i></i><b></b></div>
+              <div class="stage-star star-one">✳</div>
+              <div class="stage-star star-two">✦</div>
+            </div>
+            <div class="art-wave wave-one"></div>
+            <div class="art-wave wave-two"></div>
+            <div class="art-caption">good times<br>on the coast</div>
+          </div>
+          <div class="hero-side-label">THE FIRST EDITION · EST. 2027</div>
+        </div>
+
+        <div class="stats-row" id="festival-stats">
+          <div><strong id="stat-days">4</strong><span>festival days</span></div>
+          <div><strong id="stat-shows">23</strong><span>performances</span></div>
+          <div><strong id="stat-artists">12</strong><span>artists</span></div>
+          <div class="stats-location"><span class="location-icon">⌖</span><span>Deauville<br><small>Normandy, France</small></span></div>
+        </div>
+
+        <section class="home-section">
+          <div class="section-heading">
+            <div><p class="eyebrow">YOUR NEXT GOOD NIGHT</p><h2>Find your kind of funny.</h2></div>
+            <button class="text-button" data-page-link="programme">See all shows <span>→</span></button>
+          </div>
+          <div class="type-cards">
+            <button class="type-card type-solo" data-go-kind="solo"><span class="type-number">01</span><span class="type-emoji">🎤</span><strong>Solo shows</strong><small>One mic, one comic, many stories.</small><span class="card-arrow">↗</span></button>
+            <button class="type-card type-lineup" data-go-kind="lineup"><span class="type-number">02</span><span class="type-emoji">🎭</span><strong>Lineups</strong><small>A few favourites sharing a stage.</small><span class="card-arrow">↗</span></button>
+            <button class="type-card type-workshop" data-go-kind="workshop"><span class="type-number">03</span><span class="type-emoji">✍️</span><strong>Workshops</strong><small>Try a joke or two of your own.</small><span class="card-arrow">↗</span></button>
+          </div>
+        </section>
+
+        <section class="home-section featured-section">
+          <div class="featured-card">
+            <div class="featured-copy"><p class="eyebrow">A FESTIVAL FAVOURITE</p><h2>Laugh all the way<br>to the last night.</h2><p>Four venues around town, new comics and a closing gala to bring everyone back together.</p><button class="button button-light" data-page-link="venues">Find a venue <span>→</span></button></div>
+            <div class="featured-stamp"><span>JUNE</span><strong>10<br>—<br>13</strong><span>DEAUVILLE</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="page content-page" id="page-programme">
+        <div class="page-title-row"><div><p class="eyebrow">MAKE A PLAN</p><h1>The programme</h1><p class="page-lede">Pick a day and find something that makes you laugh.</p></div><span class="page-doodle">✳</span></div>
+        <div class="day-tabs" id="day-tabs" role="tablist" aria-label="Festival days"></div>
+        <div class="filter-row"><p id="programme-count">Loading shows…</p><label class="filter-select">Show me <select id="kind-filter"><option value="all">Everything</option><option value="solo">Solo shows</option><option value="lineup">Lineups</option><option value="workshop">Workshops</option></select></label></div>
+        <div class="show-list" id="programme-list"></div>
+      </section>
+
+      <section class="page content-page" id="page-artists">
+        <div class="page-title-row"><div><p class="eyebrow">THE PEOPLE BEHIND THE PUNCHLINES</p><h1>Meet the artists</h1><p class="page-lede">Twelve comics, hosts and teachers are joining us in Deauville.</p></div><span class="page-doodle">☺</span></div>
+        <div class="people-grid" id="artists-list"></div>
+      </section>
+
+      <section class="page content-page" id="page-venues">
+        <div class="page-title-row"><div><p class="eyebrow">FOUR LITTLE CORNERS OF DEAUVILLE</p><h1>Find your venue</h1><p class="page-lede">From a big night at the casino to a small show by the beach.</p></div><span class="page-doodle">⌖</span></div>
+        <div class="venue-grid" id="venues-list"></div>
+      </section>
+
+      <section class="page content-page" id="page-now">
+        <div class="page-title-row"><div><p class="eyebrow">THE NIGHT IS YOUNG</p><h1>On stage now</h1><p class="page-lede">Choose a moment in the festival to see what's playing.</p></div><span class="page-doodle">◷</span></div>
+        <div class="now-picker"><label for="moment-input">Choose a date and time</label><div class="picker-controls"><input id="moment-input" type="datetime-local" value="2027-06-11T21:00"><button class="button button-dark" id="check-now">Check the programme <span>→</span></button></div><p class="helper-text">Try Friday, 11 June at 21:00 to see the live programme example.</p></div>
+        <div id="now-results"></div>
+      </section>
+
+      <section class="page content-page" id="page-admin">
+        <div class="page-title-row"><div><p class="eyebrow">FESTIVAL TEAM</p><h1>Organiser area</h1><p class="page-lede">Add a performance or make a change to the schedule.</p></div><span class="page-doodle">✎</span></div>
+        <div class="admin-notice"><span>i</span><p>This is a local class-project demo. Changes are saved to the festival data file on this computer.</p></div>
+        <div class="admin-layout">
+          <form class="admin-form" id="performance-form">
+            <input id="show-id" type="hidden">
+            <div class="form-heading"><p class="eyebrow">SCHEDULE A SHOW</p><h2 id="form-title">Add a performance</h2></div>
+            <label>Show title<input id="title-input" name="title" required maxlength="80" placeholder="e.g. A Very Good Joke"></label>
+            <div class="form-columns"><label>Type<select id="kind-input" name="kind"><option value="solo">Solo show</option><option value="lineup">Lineup</option><option value="workshop">Workshop</option></select></label><label>Venue<select id="venue-input" name="venue" required></select></label></div>
+            <div class="form-columns"><label>Date and time<input id="start-input" name="start" type="datetime-local" required></label><label>Duration (minutes)<input id="duration-input" name="duration_minutes" type="number" min="1" max="360" value="60" required></label></div>
+            <label>Short description<textarea id="description-input" name="description" rows="2" maxlength="220" placeholder="A short note for the programme"></textarea></label>
+            <div class="kind-fields" data-kind-fields="solo"><label>Artist<select id="artist-input"></select></label><label>Minimum age<input id="age-input" type="number" min="0" max="18" value="0"></label></div>
+            <div class="kind-fields hidden" data-kind-fields="lineup"><label>Host<select id="host-input"></select></label><label>Acts (hold Ctrl to choose more)<select id="acts-input" multiple size="4"></select></label></div>
+            <div class="kind-fields hidden" data-kind-fields="workshop"><label>Teacher<select id="teacher-input"></select></label><label>Maximum participants<input id="participants-input" type="number" min="1" max="100" value="12"></label></div>
+            <p class="form-message" id="form-message" role="status"></p>
+            <div class="form-actions"><button class="button button-dark" type="submit" id="save-show">Save performance <span>→</span></button><button class="text-button hidden" type="button" id="cancel-edit">Cancel edit</button></div>
+          </form>
+          <div class="admin-schedule"><div class="list-heading"><div><p class="eyebrow">CURRENT SCHEDULE</p><h2>Manage performances</h2></div><span class="small-count" id="admin-count">—</span></div><div class="admin-show-list" id="admin-show-list"></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="brand footer-brand" href="#home" data-page-link="home"><span class="brand-mark">R</span><span>Deauville <small>Festival du Rire</small></span></a><p>A few days of comedy by the sea. <span>See you in Deauville · 2027</span></p><button class="footer-top" data-page-link="home">Back to top ↑</button></footer>
+  </body>
+</html>
